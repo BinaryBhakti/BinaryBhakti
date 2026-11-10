@@ -31,7 +31,7 @@
   <nav><a href="#overview">Overview</a><a href="#map">System map</a><a href="#flows">Flows</a><a href="#roles">Roles</a><a href="#data">Data</a><a href="#cost">Limits</a><a href="#code">Code map</a><a href="#run">Run</a><a href="#log">Change log</a><a href="#glossary">Glossary</a></nav>
 
   <h2 id="overview">Overview</h2>
-  <p>GitHub shows <code>README.md</code> from the repo named after the user on their profile. GitHub's markdown strips inline <code>&lt;svg&gt;</code>, so every custom card is a separate <code>.svg</code> file embedded with <code>&lt;img&gt;</code>. Every card is drawn by one script, <code>scripts/build_cards.py</code>, which reads the contribution calendar through GitHub GraphQL. Inside an &lt;img&gt; the SVG is sandboxed (no scripts, no network) but its own &lt;style&gt; runs, so motion is CSS keyframes and fonts (Instrument Serif and Schibsted Grotesk, subset to ASCII) are embedded as base64 woff2. Each element's base style is its final frame and keyframes animate <i>from</i> hidden, so <code>prefers-reduced-motion</code> and <code>STATIC=1</code> both just drop the animations. Counters count up with one &lt;text&gt; per frame, because CSS can't change text content. This approach follows avivashishta.com/blog/github-profile-readme-animated-svg-cards.</p>
+  <p>GitHub shows <code>README.md</code> from the repo named after the user on their profile. GitHub's markdown strips inline <code>&lt;svg&gt;</code>, so every custom card is a separate <code>.svg</code> file embedded with <code>&lt;img&gt;</code>. Every card is drawn by one script, <code>scripts/build_cards.py</code>, which reads the contribution calendar through GitHub GraphQL. Inside an &lt;img&gt; the SVG is sandboxed (no scripts, no network) but its own &lt;style&gt; runs, so motion is CSS keyframes and fonts (Instrument Serif and Schibsted Grotesk, subset to ASCII) are embedded as base64 woff2. Each element's base style is its final frame and keyframes animate <i>from</i> hidden, so <code>prefers-reduced-motion</code> and <code>STATIC=1</code> both just drop the animations. Counters count up with one &lt;text&gt; per frame, because CSS can't change text content. The layout follows avivashishta.com/blog/github-profile-readme-animated-svg-cards and github.com/AviVashishta29: the README column is 880px, full cards are 880 wide and thirds 293.333 wide, the 12px gaps are baked into each SVG (so the README has no blank lines or spaces between images), and animation delays run on one page-wide timeline so the page plays top to bottom.</p>
 
   <h2 id="map">System map</h2>
   <div class="card">
@@ -60,7 +60,8 @@
   <h2 id="cost">Limits and cost</h2>
   <ul>
     <li>Free: GitHub Actions minutes (under a minute a day).</li>
-    <li>Each card is 50–100 KB because fonts are embedded per file; the script asserts every card stays under 200 KB.</li>
+    <li>Each card is 40–110 KB because fonts are embedded per file; the script asserts every card stays under 250 KB.</li>
+    <li>The README must keep each row of thirds on one line with no spaces, or GitHub adds gaps and the row wraps.</li>
     <li>SVG text does not wrap, and fonts only cover printable ASCII plus · → — ’ ↑. Keep copy short and inside that set, or re-subset the fonts.</li>
     <li>Cards use the light theme only; dark-mode viewers see light cards.</li>
   </ul>
@@ -77,6 +78,7 @@ git push                            # the profile updates on push</pre>
 
   <h2 id="log">Change log</h2>
   <table>
+    <tr><td>2026-11-11</td><td>Rebuilt to match the AviVashishta29 layout: 880px seamless stack, ASCII portrait from the avatar, mono labels (JetBrains Mono), count-up tiles, light/dark section title, repo cards with live stars and languages; removed section and social cards.</td></tr>
     <tr><td>2026-11-10</td><td>Animated redesign: self-built hero, count-up tiles, blue contribution graph and monthly bars from GraphQL; embedded fonts; reduced-motion support; dropped github-readme-stats and profile-summary-cards.</td></tr>
     <tr><td>2026-11-10</td><td>Initial redesign: header, section, project and social SVG cards; stats from the github-readme-stats Action and profile-summary-cards; Kora Kaagaz palette.</td></tr>
   </table>
@@ -93,10 +95,11 @@ git push                            # the profile updates on push</pre>
   const nodes = {
     "README.md": "Layout: header → stats → selected work → socials. Uses <p align=center> and <img width=…>, which is all the HTML GitHub allows.",
     "build_cards.py": "Fetches contributions via gh api graphql, computes streaks and monthly totals, writes all 16 animated cards to assets/.",
-    "assets/*.svg": "Generated cards: hero, 3 count-up tiles, contribution graph, monthly bars, sections, projects, socials.",
+    "assets/*.svg": "Generated cards: hero with ASCII portrait, contribution graph, monthly bars, 3 tiles, title (light/dark), 6 repo cards.",
     "cards.yml": "Daily GitHub Action: runs build_cards.py with GITHUB_TOKEN and commits assets/*.svg if anything changed.",
-    "fonts/*.woff2": "Subset Instrument Serif (regular, italic) and Schibsted Grotesk (450, 650) under OFL; embedded into each SVG.",
-    "GitHub GraphQL": "Source of the contribution calendar, public repo count and followers."
+    "fonts/*.woff2": "Subset Instrument Serif (regular, italic), Schibsted Grotesk (450, 650) and JetBrains Mono under OFL; embedded into each SVG.",
+    "make_portrait.py": "One-off: turns the GitHub avatar into data/portrait.txt by separating the figure from the wall by colour.",
+    "GitHub GraphQL": "Source of the contribution calendar, public repos, live-app count (repos with a homepage), stars and languages."
   };
   const box = document.getElementById("map-nodes");
   Object.keys(nodes).forEach((k, i) => {
@@ -115,7 +118,7 @@ git push                            # the profile updates on push</pre>
   document.getElementById("next").onclick = () => { step++; show(); };
   document.getElementById("flow").onchange = () => { step = 0; show(); };
   show();
-  const files = [["README.md", "Profile page layout"], ["scripts/build_cards.py", "Fetches data, renders all animated cards"], ["assets/hero.svg", "Name, bio, spinning ring"], ["assets/tile-*.svg", "Count-up tiles: build, ship, streak"], ["assets/heatmap.svg", "Contribution graph"], ["assets/activity.svg", "Monthly bars and streak stats"], ["assets/section-*.svg", "Section title cards"], ["fonts/", "Subset woff2 fonts + OFL licences"], ["assets/project-*.svg", "Project grid cards"], ["assets/social-*.svg", "Social link cards"], [".github/workflows/cards.yml", "Daily render Action"], ["docs/architecture.html", "This page"]];
+  const files = [["README.md", "Profile page layout"], ["scripts/build_cards.py", "Fetches data, renders all animated cards"], ["assets/hero.svg", "Name, handle, bio, ASCII portrait"], ["assets/heatmap.svg", "Contribution graph"], ["assets/activity.svg", "Monthly bars, streaks, active days"], ["assets/tile-*.svg", "BUILD / SHIP / SAY HELLO tiles"], ["assets/title-work-*.svg", "Section title, light and dark"], ["assets/repo-*.svg", "Repo cards with live language and stars"], ["scripts/make_portrait.py", "Avatar to ASCII (needs Pillow, run locally)"], ["data/portrait.txt", "The ASCII portrait"], ["fonts/", "Subset woff2 fonts + OFL licences"], ["assets/project-*.svg", "Project grid cards"], ["assets/social-*.svg", "Social link cards"], [".github/workflows/cards.yml", "Daily render Action"], ["docs/architecture.html", "This page"]];
   const t = document.getElementById("codeTable");
   const render = q => { t.innerHTML = files.filter(f => f.join(" ").toLowerCase().includes(q)).map(f => `<tr><td><code>${f[0]}</code></td><td>${f[1]}</td></tr>`).join(""); };
   document.getElementById("q").oninput = e => render(e.target.value.toLowerCase());
