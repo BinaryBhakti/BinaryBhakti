@@ -12,6 +12,7 @@
 @keyframes pop{0%{opacity:0;transform:scale(.3)}70%{transform:scale(1.15)}100%{transform:none}}
 @keyframes tilein{0%{opacity:0;transform:translateY(80px) scale(.65) rotate(-8deg)}55%{opacity:1;transform:translateY(-9px) scale(1.04) rotate(1.8deg)}78%{transform:translateY(3px) scale(.99) rotate(-.6deg)}100%{transform:none}}
 @keyframes slide{from{opacity:0;transform:translateX(-22px)}}
+@keyframes shine{0%{transform:translateX(0)}45%,100%{transform:translateX(820px)}}
 @keyframes sweep{0%{transform:translateX(0) skewX(-20deg)}24%,100%{transform:translateX(1300px) skewX(-20deg)}}
 @keyframes ring{0%{opacity:.6;transform:scale(.2)}100%{opacity:0;transform:scale(2.2)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}

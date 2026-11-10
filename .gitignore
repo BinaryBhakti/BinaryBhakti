@@ -2,3 +2,8 @@
 __pycache__/
 *.pyc
 .env*
+# Source photos for the portrait stay local; only data/portrait.txt is committed
+*.png
+*.jpg
+*.jpeg
+*.heic

@@ -78,6 +78,7 @@ git push                            # the profile updates on push</pre>
 
   <h2 id="log">Change log</h2>
   <table>
+    <tr><td>2026-11-11</td><td>Hero matched to the reference: two-line 100–108px name rising line by line, a cobalt shine sweeping through the italic handle (CSS band clipped to the letters, so reduced-motion stops it), and a fine 150×82 ASCII portrait from the passport photo printing in row by row.</td></tr>
     <tr><td>2026-11-11</td><td>Cobalt (#064bff) is now the signature accent: handle, BUILD tile, best-month bar, graph. Periwinkle tile and haze graph cells. Portrait regenerated from the new profile photo (crop, mirror-frame mask, equalised characters).</td></tr>
     <tr><td>2026-11-11</td><td>Rebuilt to match the AviVashishta29 layout: 880px seamless stack, ASCII portrait from the avatar, mono labels (JetBrains Mono), count-up tiles, light/dark section title, repo cards with live stars and languages; removed section and social cards.</td></tr>
     <tr><td>2026-11-10</td><td>Animated redesign: self-built hero, count-up tiles, blue contribution graph and monthly bars from GraphQL; embedded fonts; reduced-motion support; dropped github-readme-stats and profile-summary-cards.</td></tr>
@@ -99,7 +100,7 @@ git push                            # the profile updates on push</pre>
     "assets/*.svg": "Generated cards: hero with ASCII portrait, contribution graph, monthly bars, 3 tiles, title (light/dark), 6 repo cards.",
     "cards.yml": "Daily GitHub Action: runs build_cards.py with GITHUB_TOKEN and commits assets/*.svg if anything changed.",
     "fonts/*.woff2": "Subset Instrument Serif (regular, italic), Schibsted Grotesk (450, 650) and JetBrains Mono under OFL; embedded into each SVG.",
-    "make_portrait.py": "One-off: turns the GitHub avatar into data/portrait.txt. Crop and mask boxes are tuned per photo; the figure is separated from the wall by colour, then characters are histogram-equalised so the face keeps detail.",
+    "make_portrait.py": "One-off, run locally with a photo path: turns a white-background photo into a 150-column ASCII portrait (data/portrait.txt). Sharpens, then maps brightness with a light-skewed curve so the face keeps its features at 3px type. The photo is never committed (.gitignore blocks images).",
     "GitHub GraphQL": "Source of the contribution calendar, public repos, live-app count (repos with a homepage), stars and languages."
   };
   const box = document.getElementById("map-nodes");
@@ -119,7 +120,7 @@ git push                            # the profile updates on push</pre>
   document.getElementById("next").onclick = () => { step++; show(); };
   document.getElementById("flow").onchange = () => { step = 0; show(); };
   show();
-  const files = [["README.md", "Profile page layout"], ["scripts/build_cards.py", "Fetches data, renders all animated cards"], ["assets/hero.svg", "Name, handle, bio, ASCII portrait"], ["assets/heatmap.svg", "Contribution graph"], ["assets/activity.svg", "Monthly bars, streaks, active days"], ["assets/tile-*.svg", "BUILD / SHIP / SAY HELLO tiles"], ["assets/title-work-*.svg", "Section title, light and dark"], ["assets/repo-*.svg", "Repo cards with live language and stars"], ["scripts/make_portrait.py", "Avatar to ASCII (needs Pillow, run locally)"], ["data/portrait.txt", "The ASCII portrait"], ["fonts/", "Subset woff2 fonts + OFL licences"], ["assets/project-*.svg", "Project grid cards"], ["assets/social-*.svg", "Social link cards"], [".github/workflows/cards.yml", "Daily render Action"], ["docs/architecture.html", "This page"]];
+  const files = [["README.md", "Profile page layout"], ["scripts/build_cards.py", "Fetches data, renders all animated cards"], ["assets/hero.svg", "Name, handle, bio, ASCII portrait"], ["assets/heatmap.svg", "Contribution graph"], ["assets/activity.svg", "Monthly bars, streaks, active days"], ["assets/tile-*.svg", "BUILD / SHIP / SAY HELLO tiles"], ["assets/title-work-*.svg", "Section title, light and dark"], ["assets/repo-*.svg", "Repo cards with live language and stars"], ["scripts/make_portrait.py", "Photo to ASCII (needs Pillow, run locally with a photo path)"], ["data/portrait.txt", "The ASCII portrait"], ["fonts/", "Subset woff2 fonts + OFL licences"], ["assets/project-*.svg", "Project grid cards"], ["assets/social-*.svg", "Social link cards"], [".github/workflows/cards.yml", "Daily render Action"], ["docs/architecture.html", "This page"]];
   const t = document.getElementById("codeTable");
   const render = q => { t.innerHTML = files.filter(f => f.join(" ").toLowerCase().includes(q)).map(f => `<tr><td><code>${f[0]}</code></td><td>${f[1]}</td></tr>`).join(""); };
   document.getElementById("q").oninput = e => render(e.target.value.toLowerCase());

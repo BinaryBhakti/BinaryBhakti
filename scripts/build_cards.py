@@ -48,6 +48,7 @@ KEYFRAMES = """
 @keyframes pop{0%{opacity:0;transform:scale(.3)}70%{transform:scale(1.15)}100%{transform:none}}
 @keyframes tilein{0%{opacity:0;transform:translateY(80px) scale(.65) rotate(-8deg)}55%{opacity:1;transform:translateY(-9px) scale(1.04) rotate(1.8deg)}78%{transform:translateY(3px) scale(.99) rotate(-.6deg)}100%{transform:none}}
 @keyframes slide{from{opacity:0;transform:translateX(-22px)}}
+@keyframes shine{0%{transform:translateX(0)}45%,100%{transform:translateX(820px)}}
 @keyframes sweep{0%{transform:translateX(0) skewX(-20deg)}24%,100%{transform:translateX(1300px) skewX(-20deg)}}
 @keyframes ring{0%{opacity:.6;transform:scale(.2)}100%{opacity:0;transform:scale(2.2)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
@@ -137,22 +138,26 @@ def streaks(days):
 
 # ---------- cards ----------
 def hero():
-    h = 380
+    h = 420
     rows = (ROOT / "data" / "portrait.txt").read_text().splitlines()
+    # Portrait prints in row by row; metrics match CELL in make_portrait.py (line height / char width).
     ascii_rows = "".join(
-        f'<text x="482" y="{40 + r*7.6:.2f}" xml:space="preserve" class="m" font-size="6.3" fill="{INK}" opacity=".8"'
-        f'{anim("fade", .4, .5 + r*.025, "ease-out both")}>{escape(line)}</text>' for r, line in enumerate(rows))
-    body = f"""{paper(W, h)}
-<clipPath id="nm"><text x="30" y="168" class="s" font-size="124">Ashmit</text></clipPath>
-<g{anim("slide", .7, .1)}><rect x="36" y="40" width="8" height="8" fill="{ACCENT}"{loop("blink", 1.6, 1.4)}/>
-<text x="54" y="48" class="m" font-size="12" letter-spacing="1.2" fill="{MUTED}">FULL-STACK &amp; AI ENGINEER</text></g>
-<g{anim("rise", .9, .2)}><text x="30" y="168" class="s" font-size="124" fill="{INK}">Ashmit</text>
-<g clip-path="url(#nm)"><rect x="-220" y="40" width="120" height="150" fill="url(#gl)"{loop("sweep", 5, 2.2, "transform:translateX(-400px)")}/></g></g>
-<text x="34" y="238" class="i" font-size="72" fill="{ACCENT}"{anim("rise", .9, .45)}>BinaryBhakti</text>
-<g{anim("rise", .8, .7)}><text x="36" y="290" class="g" font-size="16.5" fill="#2a2a28">I build AI agents, DevOps pipelines and design-first</text>
-<text x="36" y="314" class="g" font-size="16.5" fill="#2a2a28">web apps, and ship them in public.</text></g>
-<g{anim("fade", .8, 1)}><text x="36" y="350" class="m" font-size="12" fill="{INK}">github.com/BinaryBhakti</text>
-<text x="212" y="350" class="m" font-size="12" fill="{ACCENT}"{loop("nudgeup", 1.8, 2)}>↗</text></g>
+        f'<text x="552" y="{60 + r*3.5:.1f}" xml:space="preserve" class="m" font-size="3.2" fill="{INK}" opacity=".85"'
+        f'{anim("fade", .3, .35 + r*.018, "ease-out both")}>{escape(line)}</text>' for r, line in enumerate(rows))
+    # Shine: a cobalt band clipped to the italic line's letters, swept with CSS so reduced-motion stops it.
+    body = f"""<defs><linearGradient id="band" x1="0" x2="1"><stop offset="0" stop-color="{ACCENT}" stop-opacity="0"/>
+<stop offset=".5" stop-color="{ACCENT}"/><stop offset="1" stop-color="{ACCENT}" stop-opacity="0"/></linearGradient>
+<clipPath id="handle"><text x="38" y="278" class="i" font-size="100" letter-spacing="-2">BinaryBhakti</text></clipPath></defs>
+{paper(W, h)}
+<g{anim("fade", .9, 0, "ease-out both")}><rect x="40" y="46" width="8" height="8" rx="2" fill="{ACCENT}"{loop("blink", 1.6, .9)}/>
+<text x="58" y="54" class="m" font-size="12" letter-spacing="1.2" fill="{MUTED}">FULL-STACK &amp; AI ENGINEER</text></g>
+<text x="36" y="182" class="s" font-size="108" letter-spacing="-2" fill="{INK}"{anim("rise", .8, .15)}>Ashmit</text>
+<g{anim("rise", .8, .3)}><text x="38" y="278" class="i" font-size="100" letter-spacing="-2" fill="{NAVY}">BinaryBhakti</text>
+<g clip-path="url(#handle)"><rect x="-260" y="180" width="220" height="130" fill="url(#band)"{loop("shine", 7, 1.6, "transform:translateX(-600px)")}/></g></g>
+<g{anim("rise", .8, .55)}><text x="42" y="328" class="g" font-size="17" fill="#2a2a28">I build AI agents, DevOps pipelines and</text>
+<text x="42" y="354" class="g" font-size="17" fill="#2a2a28">design-first web apps, and ship them in public.</text></g>
+<g{anim("fade", .9, .8, "ease-out both")}><text x="42" y="388" class="m" font-size="13" fill="{INK}">github.com/BinaryBhakti</text>
+<text x="232" y="388" class="m" font-size="13" fill="{ACCENT}"{loop("nudgeup", 1.8, 1.8)}>↗</text></g>
 {ascii_rows}"""
     return svg(W, h + GAP, body, "Ashmit (BinaryBhakti), full-stack and AI engineer. I build AI agents, DevOps pipelines and design-first web apps.",
                ["serif", "italic", "sans", "mono"])
