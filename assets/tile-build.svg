@@ -23,31 +23,31 @@
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 <defs><linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
-<clipPath id="card"><rect x="0" width="285.333" height="210" rx="16"/></clipPath>
-<g class="tile" style="animation:tilein 1.1s cubic-bezier(.2,.8,.2,1) both;animation-delay:2.80s">
-<g clip-path="url(#card)"><rect x="0" width="285.333" height="210" fill="#064bff"/>
-<circle cx="245" cy="172" r="60" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2" class="fb" style="opacity:0;animation:ring 3.2s ease-in-out 3.30s infinite"/>
-<rect x="-140" y="-20" width="90" height="250" fill="url(#gl)" style="transform:translateX(-400px);animation:sweep 6s ease-in-out 4.20s infinite"/></g>
-<text x="22" y="38" class="m" font-size="12" letter-spacing="1.2" fill="#fff" style="animation:slide 0.6s cubic-bezier(.2,.75,.2,1) both;animation-delay:3.15s">BUILD</text>
-<text x="252" y="38" class="m" font-size="14" fill="#fff" style=";animation:nudge 1.8s ease-in-out 4.10s infinite">→</text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.25s">0<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.30s">9<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.35s">17<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.40s">24<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.45s">30<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.50s">35<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.55s">39<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.60s">43<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.65s">46<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.70s">49<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.75s">51<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.80s">53<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.85s">54<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.90s">55<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.95s">55<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 4.00s">56<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 4.05s">56<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 4.10s">56<tspan class="i"> repos</tspan></text>
-<text x="20" y="112" class="s" font-size="46" fill="#fff" style="animation:show 0.01s linear both;animation-delay:4.15s">56<tspan class="i"> repos</tspan></text>
-<text x="22" y="150" class="g" font-size="13.5" fill="#fff" opacity=".9">Agents, DevOps pipelines and</text><text x="22" y="170" class="g" font-size="13.5" fill="#fff" opacity=".9">web apps, built in the open.</text></g>
+<clipPath id="card"><rect x="4" width="285.333" height="210" rx="16"/></clipPath>
+<g class="tile" style="animation:tilein 1.1s cubic-bezier(.2,.8,.2,1) both;animation-delay:2.95s">
+<g clip-path="url(#card)"><rect x="4" width="285.333" height="210" fill="#071a43"/>
+<circle cx="249" cy="172" r="60" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2" class="fb" style="opacity:0;animation:ring 3.2s ease-in-out 3.45s infinite"/>
+<rect x="-136" y="-20" width="90" height="250" fill="url(#gl)" style="transform:translateX(-400px);animation:sweep 6s ease-in-out 4.35s infinite"/></g>
+<text x="26" y="38" class="m" font-size="12" letter-spacing="1.2" fill="#fff" style="animation:slide 0.6s cubic-bezier(.2,.75,.2,1) both;animation-delay:3.30s">BUILD</text>
+<text x="256" y="38" class="m" font-size="14" fill="#fff" style=";animation:nudge 1.8s ease-in-out 4.25s infinite">→</text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.40s">0<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.45s">9<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.50s">17<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.55s">24<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.60s">30<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.65s">35<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.70s">39<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.75s">43<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.80s">46<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.85s">49<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.90s">51<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 3.95s">53<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 4.00s">54<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 4.05s">55<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 4.10s">55<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 4.15s">56<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 4.20s">56<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="opacity:0;animation:on .05s linear 4.25s">56<tspan class="i"> repos</tspan></text>
+<text x="24" y="112" class="s" font-size="46" fill="#fff" style="animation:show 0.01s linear both;animation-delay:4.30s">56<tspan class="i"> repos</tspan></text>
+<text x="26" y="150" class="g" font-size="13.5" fill="#fff" opacity=".9">Agents, DevOps pipelines and</text><text x="26" y="170" class="g" font-size="13.5" fill="#fff" opacity=".9">web apps, built in the open.</text></g>
 </svg>

@@ -117,7 +117,6 @@ def fetch():
     cal = user["contributionsCollection"]["contributionCalendar"]
     repos = user["repositories"]
     return {"repos": repos["totalCount"], "repo": {r["name"]: r for r in repos["nodes"]},
-            "live": sum(1 for r in repos["nodes"] if r["homepageUrl"]),
             "total": cal["totalContributions"], "weeks": [w["contributionDays"] for w in cal["weeks"]]}
 
 
@@ -184,7 +183,7 @@ def heatmap(d):
     ly = y0 + 7 * step + 7
     legend = "".join(f'<rect x="{740 + i*14}" y="{ly:.0f}" width="11" height="11" rx="2" fill="{c}"/>' for i, c in enumerate(RAMP.values()))
     body = f"""{paper(W, h)}
-<text x="36" y="54" class="s" font-size="36" fill="{INK}"{anim("rise", .8, .9)}>Showing up, <tspan class="i" fill="{ACCENT}">daily</tspan></text>
+<text x="36" y="54" class="s" font-size="36" fill="{INK}"{anim("rise", .8, .9)}>Proof of <tspan class="i" fill="{ACCENT}">work</tspan></text>
 <text x="844" y="50" text-anchor="end" class="m" font-size="11" letter-spacing="1.2" fill="{MUTED}"{anim("fade", .8, 1.1)}>REFRESHED EVERY MORNING</text>
 {"".join(cells)}
 <g{anim("fade", .6, 1.6)}>{"".join(months)}
@@ -287,16 +286,10 @@ def repo(i, d, name, title_, desc, colour):
 REPOS = [
     ("incidentdesk-devops-capstone", "IncidentDesk", "FastAPI + React incident desk shipped through CI/CD, Terraform EKS, Helm and Argo CD.",
      "https://github.com/BinaryBhakti/incidentdesk-devops-capstone"),
+    ("Leashguards", "Leashguards", "AI contract intelligence: flags risky clauses and explains them before you sign.",
+     "https://github.com/BinaryBhakti/Leashguards"),
     ("NotebookLLM", "NotebookLLM", "NotebookLM-style RAG app: upload PDFs and chat, with answers grounded in citations.",
      "https://notebook-llm-ochre.vercel.app"),
-    ("coolash", "Palette Swift", "Build harmonious colour palettes and check accessibility contrast in one place.",
-     "https://paletteswift.netlify.app/"),
-    ("WhiteBoash", "WhiteBoash", "Canvas Suite: collaborative whiteboards and structured documents, on Supabase.",
-     "https://white-boash-web.vercel.app"),
-    ("Agent-CLI-Tool", "Agent CLI Tool", "Gemini-powered CLI agent that clones any public website into clean static files.",
-     "https://github.com/BinaryBhakti/Agent-CLI-Tool"),
-    ("Website-Automation-Agent", "Web Automation Agent", "Autonomous Gemini + Playwright agent that drives a real browser end to end.",
-     "https://github.com/BinaryBhakti/Website-Automation-Agent"),
 ]
 
 if __name__ == "__main__":
@@ -306,9 +299,9 @@ if __name__ == "__main__":
         "hero.svg": hero(),
         "heatmap.svg": heatmap(d),
         "activity.svg": activity(d),
-        "tile-build.svg": tile(0, "BUILD", (d["repos"], "repos"), ["Agents, DevOps pipelines and", "web apps, built in the open."], ACCENT, 2.8),
-        "tile-ship.svg": tile(1, "SHIP", (d["live"], "live apps"), ["Deployed on Vercel and Netlify.", "Try a few below."], NAVY, 2.95),
-        "tile-hello.svg": tile(2, "SAY HELLO", "@imashmit_", ["Notes on building with AI.", "DMs are open."], PERI, 3.1, fg=NAVY),
+        "tile-studio.svg": tile(0, "NOW BUILDING", "Kora Kaagaz", ["A creative & branding studio", "in Bengaluru. Ideas, given form."], ACCENT, 2.8),
+        "tile-build.svg": tile(1, "BUILD", (d["repos"], "repos"), ["Agents, DevOps pipelines and", "web apps, built in the open."], NAVY, 2.95),
+        "tile-hello.svg": tile(2, "SAY HELLO", "Let's talk", ["Collabs, roles and big ideas.", "Find me on LinkedIn."], PERI, 3.1, fg=NAVY),
         "title-work-light.svg": title("What I'm", "building", dark=False),
         "title-work-dark.svg": title("What I'm", "building", dark=True),
     }
@@ -322,4 +315,4 @@ if __name__ == "__main__":
     assert all((OUT / n).stat().st_size < 250_000 for n in files), "card too large for camo"
     assert all(r[0] in d["repo"] for r in REPOS), "a REPOS entry is not a public repo"
     print(f"wrote {len(files)} cards ({'static' if STATIC else 'animated'}); total={d['total']} repos={d['repos']} "
-          f"live={d['live']} streak={cur}/{longest}")
+          f"streak={cur}/{longest}")
