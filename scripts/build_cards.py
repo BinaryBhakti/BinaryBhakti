@@ -25,9 +25,10 @@ OUT, FONTS = ROOT / "assets", ROOT / "fonts"
 STATIC = os.environ.get("STATIC") == "1"
 
 # Kora Kaagaz palette (KoraKaagaz/app/globals.css)
-PAPER, PAPER2, INK, MUTED, RULE, NAVY, ACCENT = "#faf8f3", "#f1ede4", "#171717", "#66655f", "#d6d5d1", "#071a43", "#3a5bb0"
-SOFT = "#8fa3d4"  # light accent, for dark backgrounds
-RAMP = {"NONE": "#e9e5da", "FIRST_QUARTILE": "#c9d3ea", "SECOND_QUARTILE": SOFT, "THIRD_QUARTILE": ACCENT, "FOURTH_QUARTILE": NAVY}
+PAPER, PAPER2, INK, MUTED, RULE, NAVY = "#faf8f3", "#f1ede4", "#171717", "#66655f", "#d6d5d1", "#071a43"
+# Blues from the Kora Kaagaz swatches: cobalt is the signature (the site's CTA colour).
+ACCENT, PERI, HAZE = "#064bff", "#90a7f9", "#dde4fd"  # cobalt, periwinkle, haze
+RAMP = {"NONE": HAZE, "FIRST_QUARTILE": "#b9c7fb", "SECOND_QUARTILE": PERI, "THIRD_QUARTILE": ACCENT, "FOURTH_QUARTILE": NAVY}
 W, GAP = 880, 12
 THIRD, TW = W / 3, (W - 2 * GAP) / 3
 
@@ -139,7 +140,7 @@ def hero():
     h = 380
     rows = (ROOT / "data" / "portrait.txt").read_text().splitlines()
     ascii_rows = "".join(
-        f'<text x="486" y="{26 + r*6.05:.2f}" xml:space="preserve" class="m" font-size="5.3" fill="{INK}" opacity=".78"'
+        f'<text x="482" y="{40 + r*7.6:.2f}" xml:space="preserve" class="m" font-size="6.3" fill="{INK}" opacity=".8"'
         f'{anim("fade", .4, .5 + r*.025, "ease-out both")}>{escape(line)}</text>' for r, line in enumerate(rows))
     body = f"""{paper(W, h)}
 <clipPath id="nm"><text x="30" y="168" class="s" font-size="124">Ashmit</text></clipPath>
@@ -232,21 +233,21 @@ def activity(d):
                ["serif", "italic", "sans", "mono"])
 
 
-def tile(i, kicker, big, desc, bg, delay):
+def tile(i, kicker, big, desc, bg, delay, fg="#fff"):
     """big: (number, unit) to count up, or a plain string."""
     h = 210
     x = i * (GAP - (THIRD - TW))  # shifts each third so the gaps between tiles are exactly GAP
-    lines = "".join(f'<text x="{x + 22:g}" y="{150 + j*20}" class="g" font-size="13.5" fill="#fff" opacity=".9">{escape(l)}</text>'
+    lines = "".join(f'<text x="{x + 22:g}" y="{150 + j*20}" class="g" font-size="13.5" fill="{fg}" opacity=".9">{escape(l)}</text>'
                     for j, l in enumerate(desc))
-    value = (count_up(x + 20, 112, big[0], big[1], 46, "#fff", delay + .45) if isinstance(big, tuple)
-             else f'<text x="{x + 20:g}" y="112" class="i" font-size="46" fill="#fff"{anim("rise", .7, delay + .45)}>{escape(big)}</text>')
+    value = (count_up(x + 20, 112, big[0], big[1], 46, fg, delay + .45) if isinstance(big, tuple)
+             else f'<text x="{x + 20:g}" y="112" class="i" font-size="46" fill="{fg}"{anim("rise", .7, delay + .45)}>{escape(big)}</text>')
     body = f"""<clipPath id="card"><rect x="{x:g}" width="{TW:g}" height="{h}" rx="16"/></clipPath>
 <g class="tile"{anim("tilein", 1.1, delay, "cubic-bezier(.2,.8,.2,1) both")}>
 <g clip-path="url(#card)"><rect x="{x:g}" width="{TW:g}" height="{h}" fill="{bg}"/>
-<circle cx="{x + 245:g}" cy="172" r="60" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2" class="fb"{loop("ring", 3.2, delay + .5, "opacity:0")}/>
+<circle cx="{x + 245:g}" cy="172" r="60" fill="none" stroke="{fg}" stroke-opacity=".5" stroke-width="2" class="fb"{loop("ring", 3.2, delay + .5, "opacity:0")}/>
 <rect x="{x - 140:g}" y="-20" width="90" height="250" fill="url(#gl)"{loop("sweep", 6, delay + 1.4, "transform:translateX(-400px)")}/></g>
-<text x="{x + 22:g}" y="38" class="m" font-size="12" letter-spacing="1.2" fill="#fff"{anim("slide", .6, delay + .35)}>{escape(kicker)}</text>
-<text x="{x + 252:g}" y="38" class="m" font-size="14" fill="#fff"{loop("nudge", 1.8, delay + 1.3)}>→</text>
+<text x="{x + 22:g}" y="38" class="m" font-size="12" letter-spacing="1.2" fill="{fg}"{anim("slide", .6, delay + .35)}>{escape(kicker)}</text>
+<text x="{x + 252:g}" y="38" class="m" font-size="14" fill="{fg}"{loop("nudge", 1.8, delay + 1.3)}>→</text>
 {value}
 {lines}</g>"""
     label = f"{kicker}: {big[0]:,} {big[1]}" if isinstance(big, tuple) else f"{kicker}: {big}"
@@ -254,7 +255,7 @@ def tile(i, kicker, big, desc, bg, delay):
 
 
 def title(text, accent, dark):
-    fill, acc = (PAPER, SOFT) if dark else (INK, ACCENT)
+    fill, acc = (PAPER, PERI) if dark else (INK, ACCENT)
     body = (f'<text x="2" y="50" class="s" font-size="40" fill="{fill}"{anim("rise", .8, 3.2)}>{escape(text)} '
             f'<tspan class="i" fill="{acc}">{escape(accent)}</tspan></text>')
     return svg(W, 72, body, f"{text} {accent}", ["serif", "italic"])
@@ -299,13 +300,13 @@ if __name__ == "__main__":
         "hero.svg": hero(),
         "heatmap.svg": heatmap(d),
         "activity.svg": activity(d),
-        "tile-build.svg": tile(0, "BUILD", (d["repos"], "repos"), ["Agents, DevOps pipelines and", "web apps, built in the open."], NAVY, 2.8),
-        "tile-ship.svg": tile(1, "SHIP", (d["live"], "live apps"), ["Deployed on Vercel and Netlify.", "Try a few below."], ACCENT, 2.95),
-        "tile-hello.svg": tile(2, "SAY HELLO", "@imashmit_", ["Notes on building with AI.", "DMs are open."], INK, 3.1),
+        "tile-build.svg": tile(0, "BUILD", (d["repos"], "repos"), ["Agents, DevOps pipelines and", "web apps, built in the open."], ACCENT, 2.8),
+        "tile-ship.svg": tile(1, "SHIP", (d["live"], "live apps"), ["Deployed on Vercel and Netlify.", "Try a few below."], NAVY, 2.95),
+        "tile-hello.svg": tile(2, "SAY HELLO", "@imashmit_", ["Notes on building with AI.", "DMs are open."], PERI, 3.1, fg=NAVY),
         "title-work-light.svg": title("What I'm", "building", dark=False),
         "title-work-dark.svg": title("What I'm", "building", dark=True),
     }
-    colours = [NAVY, ACCENT, INK]
+    colours = [ACCENT, NAVY, PERI]
     files |= {f"repo-{name.lower()}.svg": repo(i, d, name, t, desc, colours[i % 3]) for i, (name, t, desc, _) in enumerate(REPOS)}
     OUT.mkdir(exist_ok=True)
     for old in OUT.glob("*.svg"):  # the folder holds exactly what this script draws

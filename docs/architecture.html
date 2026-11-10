@@ -78,6 +78,7 @@ git push                            # the profile updates on push</pre>
 
   <h2 id="log">Change log</h2>
   <table>
+    <tr><td>2026-11-11</td><td>Cobalt (#064bff) is now the signature accent: handle, BUILD tile, best-month bar, graph. Periwinkle tile and haze graph cells. Portrait regenerated from the new profile photo (crop, mirror-frame mask, equalised characters).</td></tr>
     <tr><td>2026-11-11</td><td>Rebuilt to match the AviVashishta29 layout: 880px seamless stack, ASCII portrait from the avatar, mono labels (JetBrains Mono), count-up tiles, light/dark section title, repo cards with live stars and languages; removed section and social cards.</td></tr>
     <tr><td>2026-11-10</td><td>Animated redesign: self-built hero, count-up tiles, blue contribution graph and monthly bars from GraphQL; embedded fonts; reduced-motion support; dropped github-readme-stats and profile-summary-cards.</td></tr>
     <tr><td>2026-11-10</td><td>Initial redesign: header, section, project and social SVG cards; stats from the github-readme-stats Action and profile-summary-cards; Kora Kaagaz palette.</td></tr>
@@ -86,7 +87,7 @@ git push                            # the profile updates on push</pre>
   <h2 id="glossary">Glossary</h2>
   <table>
     <tr><td>Profile README</td><td>README.md in the repo named after the user, shown on their GitHub profile.</td></tr>
-    <tr><td>Kora Kaagaz palette</td><td>paper #faf8f3, paper-2 #f1ede4, ink #171717, muted #66655f, rule #d6d5d1, navy #071a43, accent #3a5bb0.</td></tr>
+    <tr><td>Kora Kaagaz palette</td><td>paper #faf8f3, ink #171717, navy #071a43, cobalt #064bff (signature accent, the site's CTA colour), periwinkle #90a7f9, haze #dde4fd; plus muted #66655f and rule #d6d5d1.</td></tr>
     <tr><td>STATIC=1</td><td>Script mode that leaves animations out, so screenshots show the final frame.</td></tr>
     <tr><td>Count-up</td><td>18 stacked &lt;text&gt; frames, each visible for 50 ms, ending on the real number.</td></tr>
   </table>
@@ -98,7 +99,7 @@ git push                            # the profile updates on push</pre>
     "assets/*.svg": "Generated cards: hero with ASCII portrait, contribution graph, monthly bars, 3 tiles, title (light/dark), 6 repo cards.",
     "cards.yml": "Daily GitHub Action: runs build_cards.py with GITHUB_TOKEN and commits assets/*.svg if anything changed.",
     "fonts/*.woff2": "Subset Instrument Serif (regular, italic), Schibsted Grotesk (450, 650) and JetBrains Mono under OFL; embedded into each SVG.",
-    "make_portrait.py": "One-off: turns the GitHub avatar into data/portrait.txt by separating the figure from the wall by colour.",
+    "make_portrait.py": "One-off: turns the GitHub avatar into data/portrait.txt. Crop and mask boxes are tuned per photo; the figure is separated from the wall by colour, then characters are histogram-equalised so the face keeps detail.",
     "GitHub GraphQL": "Source of the contribution calendar, public repos, live-app count (repos with a homepage), stars and languages."
   };
   const box = document.getElementById("map-nodes");

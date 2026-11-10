@@ -23,7 +23,7 @@
 </style>
 <defs><linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
 <g style="animation:rise 0.8s cubic-bezier(.2,.75,.2,1) both;animation-delay:3.76s"><rect x="0.5" y=".5" width="284.333" height="169" rx="16" fill="#faf8f3" stroke="#d6d5d1"/>
-<rect x="22" y="29" width="8" height="8" fill="#071a43"/>
+<rect x="22" y="29" width="8" height="8" fill="#064bff"/>
 <text x="38" y="38" class="g b" font-size="17" fill="#171717">WhiteBoash</text>
 <text x="22" y="70" class="g" font-size="13.5" fill="#66655f">Canvas Suite: collaborative</text><text x="22" y="90" class="g" font-size="13.5" fill="#66655f">whiteboards and structured</text><text x="22" y="110" class="g" font-size="13.5" fill="#66655f">documents, on Supabase.</text>
 <text x="22" y="146" class="m" font-size="11" fill="#66655f">TypeScript · ★ 0 · live</text></g>

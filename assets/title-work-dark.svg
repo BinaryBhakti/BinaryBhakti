@@ -22,5 +22,5 @@
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 <defs><linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
-<text x="2" y="50" class="s" font-size="40" fill="#faf8f3" style="animation:rise 0.8s cubic-bezier(.2,.75,.2,1) both;animation-delay:3.20s">What I&#x27;m <tspan class="i" fill="#8fa3d4">building</tspan></text>
+<text x="2" y="50" class="s" font-size="40" fill="#faf8f3" style="animation:rise 0.8s cubic-bezier(.2,.75,.2,1) both;animation-delay:3.20s">What I&#x27;m <tspan class="i" fill="#90a7f9">building</tspan></text>
 </svg>
