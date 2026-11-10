@@ -1,19 +1,16 @@
 <p align="center">
-  <img src="assets/header.svg" width="100%" alt="Ashmit: Full-stack and AI engineer building agents, DevOps pipelines and design-first web apps" />
+  <img src="assets/hero.svg" width="100%" alt="Ashmit: Full-stack and AI engineer building agents, DevOps pipelines and design-first web apps" />
 </p>
 
-<img src="assets/section-stats.svg" width="100%" alt="By the numbers" />
+<p align="center">
+  <a href="https://github.com/BinaryBhakti?tab=repositories"><img src="assets/tile-build.svg" width="32.5%" alt="Public repositories" /></a>
+  <a href="https://github.com/BinaryBhakti"><img src="assets/tile-ship.svg" width="32.5%" alt="Contributions this year" /></a>
+  <a href="https://x.com/imashmit_"><img src="assets/tile-streak.svg" width="32.5%" alt="Longest streak" /></a>
+</p>
 
 <p align="center">
-  <img src="profile/stats.svg" height="180" alt="GitHub stats" />
-  <img src="profile/top-langs.svg" height="180" alt="Top languages" />
-</p>
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=BinaryBhakti&theme=default&title_color=071a43&text_color=171717&bg_color=faf8f3&border_color=d6d5d1&icon_color=3a5bb0&chart_color=3a5bb0" width="100%" alt="Contribution profile" />
-</p>
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=BinaryBhakti&theme=default&title_color=071a43&text_color=171717&bg_color=faf8f3&border_color=d6d5d1&icon_color=3a5bb0&chart_color=3a5bb0" width="49%" alt="Repos per language" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=BinaryBhakti&timeZone=Asia/Kolkata&theme=default&title_color=071a43&text_color=171717&bg_color=faf8f3&border_color=d6d5d1&icon_color=3a5bb0&chart_color=3a5bb0" width="49%" alt="Commits by time of day" />
+  <img src="assets/heatmap.svg" width="100%" alt="Contribution graph for the last year" />
+  <img src="assets/activity.svg" width="100%" alt="Monthly contributions and streaks" />
 </p>
 
 <img src="assets/section-work.svg" width="100%" alt="Selected work" />
@@ -30,6 +27,6 @@
 <img src="assets/section-social.svg" width="100%" alt="Elsewhere" />
 
 <p align="center">
-  <a href="https://github.com/BinaryBhakti"><img src="assets/social-github.svg" width="32%" alt="GitHub @BinaryBhakti" /></a>
-  <a href="https://x.com/imashmit_"><img src="assets/social-x.svg" width="32%" alt="X @imashmit_" /></a>
+  <a href="https://github.com/BinaryBhakti"><img src="assets/social-github.svg" width="49%" alt="GitHub @BinaryBhakti" /></a>
+  <a href="https://x.com/imashmit_"><img src="assets/social-x.svg" width="49%" alt="X @imashmit_" /></a>
 </p>

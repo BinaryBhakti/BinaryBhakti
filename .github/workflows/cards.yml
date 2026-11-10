@@ -1,40 +1,30 @@
-name: Update stats cards
+name: Render README cards
 
 on:
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
   push:
-    paths: [".github/workflows/cards.yml"]
+    paths: ["scripts/build_cards.py", ".github/workflows/cards.yml"]
 
 jobs:
-  build:
+  render:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v6
 
-      # Public github-readme-stats instance is unreliable (503s), so cards are generated here.
-      # GITHUB_TOKEN sees public repos only; add a PAT secret with repo + read:user to count private ones.
-      - uses: stats-organization/github-readme-stats-action@v2
-        with:
-          card: stats
-          options: username=BinaryBhakti&show_icons=true&include_all_commits=true&title_color=071a43&text_color=171717&icon_color=3a5bb0&bg_color=faf8f3&border_color=d6d5d1&border_radius=12
-          path: profile/stats.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: stats-organization/github-readme-stats-action@v2
-        with:
-          card: top-langs
-          options: username=BinaryBhakti&layout=compact&langs_count=8&title_color=071a43&text_color=171717&icon_color=3a5bb0&bg_color=faf8f3&border_color=d6d5d1&border_radius=12
-          path: profile/top-langs.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+      # Redraws every card from live contribution data (public data only with GITHUB_TOKEN).
+      - name: Render cards (hero, tiles, graph, activity, projects)
+        run: python3 scripts/build_cards.py
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit cards
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add profile/*.svg
-          git commit -m "Update stats cards" || exit 0
+          git add assets/*.svg
+          git commit -m "Render README cards" || exit 0
           git push
