@@ -27,8 +27,9 @@ STATIC = os.environ.get("STATIC") == "1"
 # Kora Kaagaz palette (KoraKaagaz/app/globals.css)
 PAPER, PAPER2, INK, MUTED, RULE, NAVY = "#faf8f3", "#f1ede4", "#171717", "#66655f", "#d6d5d1", "#071a43"
 # Blues from the Kora Kaagaz swatches: cobalt is the signature (the site's CTA colour).
-ACCENT, PERI, HAZE = "#064bff", "#90a7f9", "#dde4fd"  # cobalt, periwinkle, haze
-RAMP = {"NONE": HAZE, "FIRST_QUARTILE": "#b9c7fb", "SECOND_QUARTILE": PERI, "THIRD_QUARTILE": ACCENT, "FOURTH_QUARTILE": NAVY}
+ACCENT, PERI = "#064bff", "#90a7f9"  # cobalt, periwinkle
+# Empty days are neutral grey so any blue means "contributed"; a pale blue for zero blurred into level 1.
+RAMP = {"NONE": "#ebe8e1", "FIRST_QUARTILE": "#bfcdfc", "SECOND_QUARTILE": PERI, "THIRD_QUARTILE": ACCENT, "FOURTH_QUARTILE": NAVY}
 W, GAP = 880, 12
 THIRD, TW = W / 3, (W - 2 * GAP) / 3
 
