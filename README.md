@@ -2,7 +2,7 @@
      .github/workflows/cards.yml. Gaps are baked into the SVGs, so keep this block free of blank
      lines and keep each row's cards on one line with no spaces between them. -->
 <div align="center">
-<a href="https://github.com/BinaryBhakti"><img src="./assets/hero.svg" width="100%" alt="Ashmit (BinaryBhakti), full-stack and AI engineer. I build AI agents, DevOps pipelines and design-first web apps." /></a><br>
+<a href="https://github.com/BinaryBhakti"><img src="./assets/hero.svg" width="100%" alt="Ashmit (BinaryBhakti), full-stack and AI engineer. I turn ideas into shipped software, fast." /></a><br>
 <img src="./assets/heatmap.svg" width="100%" alt="Contribution graph for the last year, refreshed daily" /><br>
 <img src="./assets/activity.svg" width="100%" alt="Contributions in the last 12 months by month, with streaks and busiest day" /><br>
 <a href="https://github.com/BinaryBhakti?tab=repositories"><img src="./assets/tile-build.svg" width="33.333%" alt="BUILD: public repos" /></a><a href="https://github.com/BinaryBhakti?tab=repositories"><img src="./assets/tile-ship.svg" width="33.333%" alt="SHIP: live apps" /></a><a href="https://x.com/imashmit_"><img src="./assets/tile-hello.svg" width="33.333%" alt="SAY HELLO: @imashmit_ on X" /></a><br>

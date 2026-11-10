@@ -154,12 +154,12 @@ def hero():
 <text x="36" y="182" class="s" font-size="108" letter-spacing="-2" fill="{INK}"{anim("rise", .8, .15)}>Ashmit</text>
 <g{anim("rise", .8, .3)}><text x="38" y="278" class="i" font-size="100" letter-spacing="-2" fill="{NAVY}">BinaryBhakti</text>
 <g clip-path="url(#handle)"><rect x="-260" y="180" width="220" height="130" fill="url(#band)"{loop("shine", 7, 1.6, "transform:translateX(-600px)")}/></g></g>
-<g{anim("rise", .8, .55)}><text x="42" y="328" class="g" font-size="17" fill="#2a2a28">I build AI agents, DevOps pipelines and</text>
-<text x="42" y="354" class="g" font-size="17" fill="#2a2a28">design-first web apps, and ship them in public.</text></g>
+<g{anim("rise", .8, .55)}><text x="42" y="328" class="g" font-size="17" fill="#2a2a28">I turn ideas into shipped</text>
+<text x="42" y="354" class="g" font-size="17" fill="#2a2a28">software, fast.</text></g>
 <g{anim("fade", .9, .8, "ease-out both")}><text x="42" y="388" class="m" font-size="13" fill="{INK}">github.com/BinaryBhakti</text>
 <text x="232" y="388" class="m" font-size="13" fill="{ACCENT}"{loop("nudgeup", 1.8, 1.8)}>↗</text></g>
 {ascii_rows}"""
-    return svg(W, h + GAP, body, "Ashmit (BinaryBhakti), full-stack and AI engineer. I build AI agents, DevOps pipelines and design-first web apps.",
+    return svg(W, h + GAP, body, "Ashmit (BinaryBhakti), full-stack and AI engineer. I turn ideas into shipped software, fast.",
                ["serif", "italic", "sans", "mono"])
 
 
